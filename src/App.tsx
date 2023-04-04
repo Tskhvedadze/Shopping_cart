@@ -5,13 +5,15 @@ import { Container } from 'react-bootstrap'
 
 import { Navbar } from './components/Navbar'
 
+import { ShoppingCartProvider } from './context/ShoppingCartContext'
+
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const Store = lazy(() => import('./pages/Store'))
 
 function App() {
     return (
-        <>
+        <ShoppingCartProvider>
             <Navbar />
             <Container className='mb-4'>
                 <Suspense fallback={<div>Loading...</div>}>
@@ -22,7 +24,7 @@ function App() {
                     </Routes>
                 </Suspense>
             </Container>
-        </>
+        </ShoppingCartProvider>
     )
 }
 
